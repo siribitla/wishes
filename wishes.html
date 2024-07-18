@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Wish</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Great Vibes', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: #000;
+            color: #fff;
+        }
+        video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 1;
+            position: absolute;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 20px;
+        }
+        .content img {
+            border-radius: 50%;
+            width: 250px; /* Increased size */
+            height: 250px; /* Increased size */
+            object-fit: contain;
+            margin-bottom: 50px;
+            border: 3px solid #fff;
+        }
+        .message {
+            font-size: 24px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay muted loop>
+        <source src="fire.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="content">
+        <img src="teju.jpg" alt="Her Picture">
+        <div class="message" id="message"></div>
+    </div>
+    <audio id="background-audio" loop>
+        <source src="bgm.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        const messageText = `
+            Hey Bestie! 
+            You're the sunshine that brightens up my day and the stars that light up my night. 
+            You're the rhythm that makes my heart sing and the melody that makes my soul dance. 
+            You're the missing piece that makes me whole, the missing beat that makes my heart complete.
+
+            You're my partner in crime, my confidante, my rock, my everything. 
+            We've shared countless memories, laughed until our sides hurt, and cried until our eyes dried. 
+            Through thick and thin, through ups and downs, we've stuck together like glue.
+
+            You're more than just a friend; you're a sister, a mentor, a guide. 
+            You're the one who knows me inside out, who understands me like no one else does. 
+            You're the one who pushes me to be my best self, who encourages me to chase my dreams, 
+            who believes in me even when I don't believe in myself.
+
+            I'm grateful for our late-night conversations, our silly jokes, our deep talks. 
+            I'm grateful for our adventures, our spontaneous trips, our quiet nights in. 
+            I'm grateful for our friendship, our bond, our love.
+
+            So here's to us, bestie! Here's to our unbreakable bond, our unshakeable trust, our unending love. 
+            Here's to many more memories, many more laughs, many more adventures. 
+            Here's to us, bestie, forever and always!
+        `;
+        const messageContainer = document.getElementById('message');
+        const words = messageText.split(' ');
+        let index = 0;
+
+        function showNextWord() {
+            if (index < words.length) {
+                messageContainer.innerHTML += words[index] + ' ';
+                index++;
+                setTimeout(showNextWord, 50); // Adjust timing as needed
+            }
+        }
+
+        showNextWord();
+    </script>
+    <script>
+        document.body.addEventListener('click', function () {
+            document.getElementById('background-audio').play();
+        });
+    </script>
+</body>
+</html>
